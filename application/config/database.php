@@ -75,13 +75,13 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
-	'username' => '',
-	'password' => '',
-	'database' => '',
+	'hostname' => 'intertodaydb.ccchnydnz10o.ap-northeast-2.rds.amazonaws.com',
+	'username' => 'intertoday',
+	'password' => 'rhee0124',
+	'database' => 'jhipster',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
-	'pconnect' => FALSE,
+	'pconnect' => FALSE, // true로 할 경우 웹호스팅 환경에서는 실행이 안된다.
 	'db_debug' => (ENVIRONMENT !== 'production'),
 	'cache_on' => FALSE,
 	'cachedir' => '',
