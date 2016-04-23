@@ -90,10 +90,11 @@ $autoload['drivers'] = array();
 |	$autoload['helper'] = array('url', 'file');
 */
 
-$autoload['helper'] = array('date');
-$autoload['helper'] = array('form');
-$autoload['helper'] = array('url');
-
+// 기본적으로 사용하는 것은 자동으로 읽어올 수 있도록 한다.
+// $autoload['libraries'] = array('database', 'session'); // TODO session을 사용하게 될 경우 에러가 발생하는 것 처리해야 함
+$autoload['libraries'] = array('database');
+$autoload['helper'] = array('url', 'file', 'date', 'form');
+$autoload['model'] = array();
 
 
 /*
