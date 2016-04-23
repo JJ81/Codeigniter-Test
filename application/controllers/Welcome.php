@@ -18,8 +18,19 @@ class Welcome extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
+
+	/**
+	 * 에러 방지를 위해서 항상 index() 메서드를 만들어준다.
+	 */
 	public function index()
 	{
-		$this->load->view('welcome_message');
+        // views폴더의 welcome_message.php파일을 읽게 한다.
+		//$this->load->view('welcome_message');
+        $this->lists();
 	}
+
+    public function lists()
+    {
+        $this->load->view('/exercise/list'); // 폴더/파일 형식으로 적어주면 해당 파일을 인식한다.
+    }
 }

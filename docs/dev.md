@@ -1,6 +1,5 @@
-# Codeigniter-Test
-
-###ENV Mac
+# Dev
+##ENV Mac
 
 apache 설정 파일 위치 -> /etc/apache2/httpd.conf
 
@@ -11,11 +10,11 @@ sudo apachectl -k start;
 httpd -t;
 
 
-###주소체계
+##주소체계
 http://호스트/컨트롤러/메서드/et
 http://localhost/index.php/welcome/index
 
-### 주소에서 index.php제거하기
+## 주소에서 index.php제거하기
 httpd.conf 파일에서
 mod_rewrite.so 모듈 활성화를 위해서 주석을 풀어준다.
 CodeIgniter root에 .htaccess파일을 만들어주고 아래와 같이 써준다
