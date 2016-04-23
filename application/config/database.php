@@ -81,7 +81,7 @@ $db['default'] = array(
 	'database' => 'jhipster',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
-	'pconnect' => FALSE, // true로 할 경우 웹호스팅 환경에서는 실행이 안된다.
+	'pconnect' => FALSE, // true로 할 경우, 웹호스팅에 문제가 발생한다
 	'db_debug' => (ENVIRONMENT !== 'production'),
 	'cache_on' => FALSE,
 	'cachedir' => '',
