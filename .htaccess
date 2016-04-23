@@ -1,4 +1,10 @@
 RewriteEngine On
+RewriteBase /
+
+# TODO 루트 디렉터리에 assets/javascript/images/css 디렉터리를 만들고 해당 파일을 따로 모아놓으려면 아래와 같이 설정을 해야 한다.
+RewriteCond $1 !^(index\.php|images|captcha|robots\.txt)
+RewriteCond $! !^(index\.php|javascript|captcha|robot\.txt)
+
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.*)$ index.php/$1 [L]
