@@ -80,5 +80,71 @@ class Board extends CI_Controller
 
         $this->load->view('board/list', $data);
     }
+    
+    function view()
+    {
+        $id = $this->uri->segment(3);
+        $data['views'] = $this->board_m->getListById($id);
+        $data['id'] = $id;
+
+        if(!empty($data['views']))
+        {
+            $this->board_m->update_hits($id);
+            $this->load->view('board/view', $data);
+        }
+        else{
+            redirect('/board/lists/1');
+        }
+    }
+
+    function delete()
+    {
+        $id = $this->uri->segment(3);
+        $this->board_m->deleteById($id);
+        redirect('/board/lists/1');
+    }
+
+    function write()
+    {
+        if($_POST)
+        {
+            $user_id = 'advisor';
+            $user_name = 'jaejun';
+            $subject = $this->input->post('subject', true);
+            $contents = $this->input->post('contents', true);
+
+            $this->board_m->insert_board($user_id, $user_name, $subject, $contents);
+            redirect('/board/lists/1');
+            exit;
+        }
+        else
+        {
+            $this->load->view('board/write');
+        }
+    }
+
+    function modify()
+    {
+        if($_POST)
+        {
+            // TODO 내용 업데이트한다.
+            $board_id = $this->input->post('board_id', true);
+            $user_id = $this->input->post('user_id', true);
+            $subject = $this->input->post('subject', true);
+            $contents = $this->input->post('contents', true);
+            $this->board_m->update_board($board_id, $user_id, $subject, $contents);
+
+            redirect('/board/view/' . $board_id);
+            exit;
+        }
+        else
+        {
+            $id = $this->uri->segment(3);
+            $data['view'] = $this->board_m->getListById($id);
+            $this->load->view('board/write', $data);
+        }
+
+    }
+
 
 }

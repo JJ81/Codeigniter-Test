@@ -94,11 +94,6 @@ class Main extends CI_Controller {
 
     }
 
-//    function update()
-//    {
-//        // 수정후 저장
-//    }
-
     function delete()
     {
         // 삭제 후 리다이렉션
