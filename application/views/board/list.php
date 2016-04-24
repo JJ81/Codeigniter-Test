@@ -8,6 +8,16 @@
 ?>
 <div class="container">
     <h1>댓글 게시판</h1>
+    <div class="search clearfix">
+        <form class="navbar-form navbar-left search-form" role="search" method="get" action="/board/search">
+            <div class="form-group">
+                <input type="text" class="form-control search-word" name="keyword" placeholder="Subject / Contents">
+            </div>
+            <button type="submit" class="btn btn-default search-btn"><span class="glyphicon glyphicon-search"></span></button>
+        </form>
+    </div>
+    <hr />
+
     <?php foreach ($list as $ls){ ?>
         id: <?= $ls->board_id ;?><br />
         username: <?= $ls->user_name ;?><br />
@@ -21,10 +31,7 @@
     <a href="/board/write" class="btn btn-primary">글쓰기</a>
     <br />
 
-<!--    current page : --><?//= $current_page ;?><!--<br />-->
-<!--    total page: --><?//= $total_page ;?><!--<br />-->
 
-    <!-- TODO 이 페이지네이션만 템플릿화하거나 혹은 CI에서 기본으로 제공하는 방법을 알아볼 것 -->
     <nav>
         <ul class="pagination pagination-lg">
             <li class="page-item">
@@ -44,5 +51,26 @@
             </li>
         </ul>
     </nav>
-
 </div>
+
+<script>
+    var
+    search_btn = $('.search-btn')
+    ,search_word = $('.search-word');
+
+    search_btn.bind('click', function (e) {
+        e.preventDefault();
+        if(search_word.val() === ''){
+            // 부트스트랩 모달로 변경할 것.
+            alert('검색어를 입력하세요.');
+            return;
+        }else{
+            $('.search-form').submit();
+        }
+    });
+
+    search_word.keydown(function (e) {
+        if(e.keyCode === 13)
+            search_btn.trigger('click');
+    });
+</script>

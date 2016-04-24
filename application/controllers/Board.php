@@ -42,7 +42,6 @@ class Board extends CI_Controller
      */
     function lists()
     {
-
         $TOTAL_COUNT = $this->board_m->get_list('ci_board', 'count'); // 총 글 개수
         $LIMIT = 5;
         $offset = ($this->uri->segment(3) - 1) * $LIMIT;
@@ -75,7 +74,6 @@ class Board extends CI_Controller
             'current_page' => $current_page,
             'prev' => $prev,
             'next' => $next
-
         );
 
         $this->load->view('board/list', $data);
@@ -146,5 +144,17 @@ class Board extends CI_Controller
 
     }
 
+    function search()
+    {
+        // $this->output->enable_profiler(true); // profiling
+
+        if($_GET)
+        {
+            $keyword = $this->input->get('keyword', true);
+            // 페이징과 함께 전달.
+            $data['list'] = $this->board_m->get_search($keyword);
+            $this->load->view('board/search', $data);
+        }
+    }
 
 }

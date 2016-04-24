@@ -83,4 +83,12 @@ class Board_m extends CI_Model
         $sql = "update `ci_board` set `hits`= `hits` + 1 where `board_id`='".$id."' ";
         $this->db->query($sql);
     }
+    
+    function get_search($word)
+    {
+        $sql = "select * from `ci_board` where concat(`subject`, `contents`) like '%".$word."%' and `board_pid`='0';";
+        $query = $this->db->query($sql);
+        $result = $query->result();
+        return $result;
+    }
 }

@@ -20,6 +20,7 @@
     <?php } ?>
     <hr />
 
+    <a href="#" class="btn btn-info" onclick="window.history.back(-1);return false;">뒤로</a>
     <a href="/board/lists/1" class="btn btn-default">목록</a>
     <a href="/board/modify/<?= $id; ?>" class="btn btn-warning">수정</a>
     <a href="/board/delete/<?= $id; ?>" class="delete-btn btn btn-danger" data-uri="/board/delete/<?= $id; ?>">삭제</a>
